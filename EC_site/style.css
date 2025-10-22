@@ -1,0 +1,236 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ヘッダー */
+.site-header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+}
+.search-box {
+    flex: 1;
+    margin: 0 20px;
+    display: flex;
+}
+.search-box input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    /* cursor: pointer; */
+}
+.header-nav a {
+    margin-left: 10px;
+}
+
+/* メインビジュアル　/ スライダー */
+.main-visual {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* overflow: hidden; */
+    position: relative;
+}
+.slider {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.slider img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    /* border-radius: 8px; */
+}
+.slide {
+    width: 100%;
+    flex-shrink: 0;
+}
+.slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* カテゴリセレクション */
+.category-section {
+    background-color: #fafafa;
+    padding: 40px 20px;
+}
+.category-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.category-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.category-list li {
+    width: 140px;
+    text-align: center;
+    transition: transform 0.3s;
+    list-style-type: none;
+}
+.category-list li:hover {
+    transform: scale(1.2);
+}
+.category-list li img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 10px;
+    object-fit: cover;
+}
+.category-list li span {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* おすすめ商品セクション */
+.recommend-section {
+    padding: 40px 20px;
+}
+.recommend-section h2 {
+    text-align:center;
+    margin-bottom: 20px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* １列５個固定 */
+    gap: 20px;
+    padding: 20px;
+}
+.product-card {
+    background: #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card img {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.prod-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+.prod-price {
+    color: #d23;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+/* フッター */
+.site-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Slick矢印（修正版） */
+.slick-prev, .slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  /* 〇デザイン */
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+
+  display: flex;               /* ← 中央に配置するため追加 */
+  align-items: center;         /* ← 縦中央 */
+  justify-content: center;     /* ← 横中央 */
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* 左右バランス */
+.slick-prev { left: 15px; }
+.slick-next { right: 15px; }
+
+/* デフォルト矢印を無効化 */
+.slick-prev::before,
+.slick-next::before {
+  content: '';
+}
+
+/* 矢印マーク */
+.slick-prev::after {
+  content: '<';
+  font-size: 26px;
+  color: #333;
+}
+.slick-next::after {
+  content: '>';
+  font-size: 26px;
+  color: #333;
+}
+
+/* ホバー時の色変更（例：黒背景＋白矢印） */
+.slick-prev:hover,
+.slick-next:hover {
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+
+.slick-prev:hover::after,
+.slick-next:hover::after {
+  color: #000;
+}
+.slick-prev:focus,
+.slick-next:focus {
+  outline: none;                  /* フォーカスの青枠を消す */
+  background: rgba(255,255,255,0.85); /* 元の背景色に戻す */
+  box-shadow: none;               /* クリック後の影を消す */
+}
+

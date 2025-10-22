@@ -1,0 +1,13 @@
+EC_site/
+├─ index.php　               ← トップページ
+├─ register.php　            ← 会員登録ページ
+├─ confirm.php　             ← 会員登録内容確認
+├─ complete.php　            ← 会員登録完了
+├─ DbManager.php             ← DB接続
+├─ product_list.php          ← 一覧（SELECT）
+├─ product_add.php           ← 登録フォーム（INSERT）
+├─ product_add_done.php      ← 登録処理
+├─ product_edit.php          ← 編集フォーム
+├─ product_edit_done.php     ← 更新処理
+├─ product_delete.php        ← 削除確認画面
+└─ product_delete_done.php   ← 削除処理

@@ -1,0 +1,95 @@
+<?php
+require_once 'DbManager.php';
+
+try {
+    $db = getDb();
+    $stmt = $db->query("SELECT * FROM products ORDER BY id ASC");
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "データ取得エラー：" . htmlspecialchars($e->getMessage(), ENT_QUOTES);
+}
+?>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECサイト風トップページ</title>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Slick CSS & JS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
+
+    
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="/">MyShop</a>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="商品を検索">
+                <button type="button">検索</button>
+            </div>
+            <div class="header-nav">
+                <a href="#">ログイン</a>
+                <a href="./register.php">会員登録</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-visual">
+        <div class="slider">
+            <div><img src="img/slide1.jpg" alt="スライド1"></div>
+            <div><img src="img/slide2.jpg" alt="スライド2"></div>
+            <div><img src="img/slide3.jpg" alt="スライド3"></div>
+        </div>
+    </div>
+
+    <section class="category-section">
+        <h2>カテゴリから探す</h2>
+        <ul class="category-list">
+            <li><a href="#"><img src="img/icon1.png" alt=""><span>カテゴリ1</span></a></li>
+            <li><a href="#"><img src="img/icon2.png" alt=""><span>カテゴリ2</span></a></li>
+            <li><a href="#"><img src="img/icon3.png" alt=""><span>カテゴリ3</span></a></li>
+            <li><a href="#"><img src="img/icon4.png" alt=""><span>カテゴリ4</span></a></li>
+        </ul>
+    </section>
+
+    <section class="recommend-section">
+        <h2>おすすめ商品</h2>
+        <div class="product-grid">
+            <?php if (!empty($products)): ?>
+                <?php foreach ($products as $p): ?>
+                    <div class="product-card">
+                        <a href="#">
+                            <?php if (!empty($p['image'])): ?>
+                                <img src="images/<?= htmlspecialchars($p['image'])?>" alt="<?= htmlspecialchars($p['name']) ?>">
+                            <?php endif; ?>
+                            <p class="prod-name"><?= htmlspecialchars($p['name']) ?></p>
+                            <p class="prod-price">￥<?= htmlspecialchars($p['price']) ?></p>    
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>現在、登録されている商品はありません。</p>
+            <?php endif ?>            
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>© MyShop All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
