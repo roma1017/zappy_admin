@@ -2,6 +2,7 @@
 require_once '../zappy_admin/DbManager.php';
 
 
+
 $db = getDb();
 
 session_start();
