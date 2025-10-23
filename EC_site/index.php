@@ -3,7 +3,7 @@ require_once 'DbManager.php';
 
 try {
     $db = getDb();
-    $stmt = $db->query("SELECT * FROM products ORDER BY id ASC");
+    $stmt = $db->query("SELECT * FROM items ORDER BY id ASC");
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "データ取得エラー：" . htmlspecialchars($e->getMessage(), ENT_QUOTES);

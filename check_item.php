@@ -26,11 +26,12 @@ $products = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <title>商品リスト</title>
-    <style>
+    <!-- <style>
         table { width: 100%; border-collapse: collapse; }
         th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
         th { background-color: #f2f2f2; }
-    </style>
+    </style> -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <h1>商品リスト</h1>

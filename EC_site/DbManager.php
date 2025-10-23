@@ -1,7 +1,7 @@
 <?php
 
 function getDb() {
-    $dsn = 'mysql:host=127.0.0.1; dbname=ec_site; charset=utf8';
+    $dsn = 'mysql:host=127.0.0.1; dbname=zappy; charset=utf8';
     $user = 'root';
     $pass = '';
 

@@ -47,6 +47,7 @@ $_SESSION['form_data'] = ['adminid' => $adminid, 'name' => $name, 'password' => 
     <title>内容確認</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <!-- Bootstrap JS -->

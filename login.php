@@ -1,8 +1,6 @@
 <?php
 require_once '../zappy_admin/DbManager.php';
 
-
-
 $db = getDb();
 
 session_start();
@@ -37,39 +35,48 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <title>管理者　ログイン</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <h2>管理者　ログイン</h2>
-    <?php if ($error) echo "<p style='color:red;'>$error</p>"; ?>
-    <!-- <div class="container"> -->
-        <form method="POST">
-            <div class="row m-3">
-                <div class="col-5">
-                    <label>管理者ID：</label>
-                    <input type="text" class="form-control" name="adminid" required placeholder="adminid">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="./script.js"></script>
+    <div class="common-page">
+        <div class="form">
+            <h2 class="page-title">管理者　login</h2>
+            <?php if ($error) echo "<p style='color:red;'>$error</p>"; ?>
+            <!-- <div class="container"> -->
+            <form class="login-form" method="POST">
+                <!-- <label>管理者ID：</label> -->
+                <input type="text" name="adminid" required placeholder="adminid">
 
-                <div class="col-5">
-                    <label>管理者パスワード：</label>
-                    <input type="password" class="form-control" name="password" required placeholder="password">
-                </div>
-
-                <div class="col-2 mt-4">
-                    <button type="submit" class="btn btn-primary btn-sm mt-1">Submit</button>
-                </div>
-            </div>
-
-            <!-- <div class="col m-3">
-                <label>管理者ID：<input type="text" class="form-control" name="adminid" required placeholder="adminid"></label><br>
-                <label>管理者パスワード：<input type="password" class="form-control" name="password" required  placeholder="password"></label><br>
-                <input type="submit"  class="btn btn-primary m-4" value="ログイン">
-            </div> -->
-        </form>
+                <!-- <label>管理者パスワード：</label> -->
+                <input type="password" name="password" required placeholder="password">
+                <button type="submit">login</button>
+            </form>
+        </div>
     </div>
 
 </body>
 
 </html>
+
+<!-- <div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form class="login-form">
+      <input type="text" placeholder="username"/>
+      <input type="password" placeholder="password"/>
+      <button>login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>
+</div> -->
