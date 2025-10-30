@@ -8,15 +8,15 @@ session_start();
 $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
 unset($_SESSION['errors']);
 
-$itemcode = isset($_SESSION['form_data']['itemcode']) ? $_SESSION['form_data']['itemcode'] : '';
+$itemcode = isset($_SESSION['form_data_item_add']['itemcode']) ? $_SESSION['form_data_item_add']['itemcode'] : '';
 
-$itemname = isset($_SESSION['form_data']['itemname']) ? $_SESSION['form_data']['itemname'] : '';
+$itemname = isset($_SESSION['form_data_item_add']['itemname']) ? $_SESSION['form_data_item_add']['itemname'] : '';
 
-$category = isset($_SESSION['form_data']['category']) ? $_SESSION['form_data']['category'] : '';
+$category = isset($_SESSION['form_data_item_add']['category']) ? $_SESSION['form_data_item_add']['category'] : '';
 
-$price = isset($_SESSION['form_data']['price']) ? $_SESSION['form_data']['price'] : '';
+$price = isset($_SESSION['form_data_item_add']['price']) ? $_SESSION['form_data_item_add']['price'] : '';
 
-unset($_SESSION['form_data']);
+unset($_SESSION['form_data_item_add']);
 ?>
 
 <!DOCTYPE html>

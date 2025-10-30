@@ -24,18 +24,18 @@ if (isset($_GET['itemCode'])) {
     // 対象１件データを取得
     $item = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $_SESSION['form_data'] = ['itemcode' => $item['itemCode'], 'itemname' => $item['itemName'], 'category' => $item['category'],  'price' => $item['price']];
+    $_SESSION['form_data_item_edit'] = ['itemcode' => $item['itemCode'], 'itemname' => $item['itemName'], 'category' => $item['category'], 'price' => $item['price']];
 }
 
-$itemcode = isset($_SESSION['form_data']['itemcode']) ? $_SESSION['form_data']['itemcode'] : '';
+$itemcode = isset($_SESSION['form_data_item_edit']['itemcode']) ? $_SESSION['form_data_item_edit']['itemcode'] : '';
 
-$itemname = isset($_SESSION['form_data']['itemname']) ? $_SESSION['form_data']['itemname'] : '';
+$itemname = isset($_SESSION['form_data_item_edit']['itemname']) ? $_SESSION['form_data_item_edit']['itemname'] : '';
 
-$category = isset($_SESSION['form_data']['category']) ? $_SESSION['form_data']['category'] : '';
+$category = isset($_SESSION['form_data_item_edit']['category']) ? $_SESSION['form_data_item_edit']['category'] : '';
 
-$price = isset($_SESSION['form_data']['price']) ? $_SESSION['form_data']['price'] : '';
+$price = isset($_SESSION['form_data_item_edit']['price']) ? $_SESSION['form_data_item_edit']['price'] : '';
 
-unset($_SESSION['form_data']);
+unset($_SESSION['form_data_item_edit']);
 
 ?>
 

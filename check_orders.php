@@ -4,7 +4,7 @@ require_once '../zappy_admin/DbManager.php';
 $db=getDb();
 
 // 商品リストを格納する配列
-$products = [];
+$orders = [];
 
 // フェッチモードを連想配列に設定
 $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -25,9 +25,9 @@ INNER JOIN
 INNER JOIN
   items AS i ON o.itemCode = i.itemCode
 WHERE
-  orders.status != 0
+  o.status != 0
 ORDER BY
-  orders.id;"
+  o.id;";
 
 $stmt = $db->prepare($sql);
 
@@ -53,7 +53,8 @@ $orders = $stmt->fetchAll();
 </head>
 <body>
     <h1>受注商品　管理</h1>
-    <?php if (count($oducts) > 0): ?>
+    <p><button onclick="location.href='admin_panel.php'">管理者画面へ戻る</button></p>    
+    <?php if (count($orders) > 0): ?>
         <table>
             <thead>
                 <tr>
@@ -67,19 +68,28 @@ $orders = $stmt->fetchAll();
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($products as $product): ?>
+                <?php foreach ($orders as $order): ?>
                     <tr>
-                        <?php $url = "register_item_edit.php?itemCode=".$product['itemCode']; ?>
-                        <td><a href=<?php echo $url ?>><?php echo htmlspecialchars($product['itemCode'], ENT_QUOTES, 'UTF-8'); ?></a></td>
-                        <td><?php echo htmlspecialchars($product['itemName'], ENT_QUOTES, 'UTF-8'); ?></td>
-                        <td><?php echo htmlspecialchars($product['category'], ENT_QUOTES, 'UTF-8'); ?></td>
-                        <td><?php echo number_format($product['price']); ?>円</td>
+                        <td><?php echo htmlspecialchars($order['id'], ENT_QUOTES, 'UTF-8'); ?></td>                      
+                        <td><?php echo htmlspecialchars($order['userId'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?php echo htmlspecialchars($order['userName'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?php echo htmlspecialchars($order['itemCode'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?php echo htmlspecialchars($order['itemName'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?php echo htmlspecialchars($order['piece'], ENT_QUOTES, 'UTF-8'); ?></td>                       
+                        <?php $return_value = match($order['status']) {
+                                  '1' => '＊＊受付待ち＊＊',
+                                  '2' => '受付済->発送準備中',
+                                  '3' => '発送完了',
+                              };
+                        ?>
+                        <?php $url = "register_order_edit.php?id=".$order['id']; ?>
+                        <td><a href=<?php echo $url ?>><?php echo $return_value ?></a><td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     <?php else: ?>
-        <p>商品が見つかりませんでした。</p>
+        <p>オーダー済商品が見つかりませんでした。</p>
     <?php endif; ?>
 </body>
 </html>

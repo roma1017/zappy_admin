@@ -21,6 +21,8 @@ if (!isset($_SESSION["admin_id"])) {
     <p>管理者画面</p>
     <p><button onclick="location.href='register_item_add.php'">商品登録</button></p>
     <p><button onclick="location.href='check_item.php'">商品リスト→修正</button></p>
+    <p><button onclick="location.href='check_orders.php'">受注管理</button></p>
+    <p><button onclick="location.href='check_register_recommend.php'">おすすめ商品管理</button></p>
     <p><a href="logout.php">ログアウト</a></p> 
 </body>
 

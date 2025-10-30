@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_SESSION['form_data'])) {
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_SESSION['form_data_item_edit'])) {
     header('Location: register_item_edit.php');
     exit;
 }
@@ -10,10 +10,10 @@ require_once '../zappy/DbManager.php';
 
 $db=getDb();
 
-$itemcode = $_SESSION['form_data']['itemcode'];
-$itemname = $_SESSION['form_data']['itemname'];
-$category = $_SESSION['form_data']['category'];
-$price = $_SESSION['form_data']['price'];
+$itemcode = $_SESSION['form_data_item_edit']['itemcode'];
+$itemname = $_SESSION['form_data_item_edit']['itemname'];
+$category = $_SESSION['form_data_item_edit']['category'];
+$price = $_SESSION['form_data_item_edit']['price'];
 
 try {
     $db->beginTransaction();
@@ -29,12 +29,12 @@ try {
     $db->commit();
 
     // 登録完了後、セッションデータをクリア
-    unset($_SESSION['form_data']);
+    unset($_SESSION['form_data_item_edit']);
 
 } catch (Exception $e) {
     $db->rollBack();
     $_SESSION['errors'] = [$e->getMessage()];
-    $_SESSION['form_data'] = ['itemcode' => $itemcode, 'itemname' => $itemname, 'category' => $category, 'price' => $price];    
+    $_SESSION['form_data_item_edit'] = ['itemcode' => $itemcode, 'itemname' => $itemname, 'category' => $category, 'price' => $price];    
     header('Location: register_item_edit.php');
     exit;
 }

@@ -30,13 +30,13 @@ if (empty($price)) {
 // エラーがあった場合はフォームに戻す
 if (!empty($errors)) {
     $_SESSION['errors'] = $errors;
-    $_SESSION['form_data'] = ['itemcode' => $itemcode, 'itemname' => $itemname, 'category' => $category,  'price' => $price];
+    $_SESSION['form_data_item_edit'] = ['itemcode' => $itemcode, 'itemname' => $itemname, 'category' => $category,  'price' => $price];
     header('Location: register_item_edit.php');
     exit;
 }
 
 // 入力内容をセッションに保存
-$_SESSION['form_data'] = ['itemcode' => $itemcode, 'itemname' => $itemname,  'category' => $category,  'price' => $price];
+$_SESSION['form_data_item_edit'] = ['itemcode' => $itemcode, 'itemname' => $itemname,  'category' => $category,  'price' => $price];
 
 ?>
 <!DOCTYPE html>

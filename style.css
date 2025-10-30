@@ -158,8 +158,25 @@ table tr:last-child td:first-child {
   border-radius: 0 0 0 5px;
 }
 
-
-
 table tr:last-child td:last-child {
   border-radius: 0 0 5px 0;
+}
+
+.order_info {
+    text-align: left;
+}
+
+.radio-group {
+  display: flex;
+}
+
+.radio_title {
+  color:#EF3B3A;
+  text-emphasis: none;
+  font-weight: bold;
+  border: 2px solid #000; /* 枠線の太さ、種類、色を指定 */
+  width: auto;
+  margin-right: 5px;
+  padding: 5px; /* 枠線とテキストの間に余白を入れる */
+  background-color: #d3dbe3;
 }
